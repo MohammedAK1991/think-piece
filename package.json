@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.7.0",
+    "firebase": "7.24.0",
     "firebase-admin": "^6.4.0",
     "firebase-tools": "^6.1.2",
     "moment": "^2.22.2",

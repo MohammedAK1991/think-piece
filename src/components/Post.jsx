@@ -1,8 +1,17 @@
 import React from 'react';
-
+import {firestore} from '../firebase';
 import moment from 'moment';
 
-const Post = ({ title, content, user, createdAt, stars, comments }) => {
+const Post = ({ title, content, user, createdAt, stars, comments,  id}) => {
+
+  const onRemove = async id => {
+    firestore.collection("posts").doc(id).delete().then(function() {
+      console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+  }
+
   return (
     <article className="Post">
       <div className="Post--content">
@@ -28,7 +37,7 @@ const Post = ({ title, content, user, createdAt, stars, comments }) => {
         </div>
         <div>
           <button className="star">Star</button>
-          <button className="delete">Delete</button>
+          <button className="delete" onClick={() => onRemove(id)}>Delete</button>
         </div>
       </div>
     </article>
